@@ -1,0 +1,24 @@
+python test.py \
+    --dataroot ./datasets/pcb_defect_no_aug \
+    --name pcb_defect_pix2pix \
+    --model pix2pix \
+    --direction AtoB \
+    --num_test 50
+
+
+python train.py \
+    --dataroot ./datasets/pcb_defect_augmented \
+    --name pcb_defect_pix2pix \
+    --model pix2pix \
+    --direction AtoB \
+    --input_nc 3 \
+    --output_nc 3 \
+    --batch_size 4 \
+    --n_epochs 100 \
+    --n_epochs_decay 100 \
+    --gpu_ids 0 \
+    --display_id -1 \
+    --print_freq 100
+
+python prepare_pcb_data.py
+
